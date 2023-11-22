@@ -4,7 +4,7 @@ import propertyData from './propertyData'
 
 const PropertyList = () => {
   return (
-    <Container-fluid>
+    <Container fluid>
       <Row style={{ margin: '30px' }}>
         {propertyData.map((property, index) => (
           <Col md={3} style={{ marginBottom: '25px' }}>
@@ -12,7 +12,7 @@ const PropertyList = () => {
           </Col>
         ))}
       </Row>
-    </Container-fluid>
+    </Container>
   )
 }
 
