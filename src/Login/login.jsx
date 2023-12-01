@@ -1,14 +1,13 @@
 import React from "react";
 import Logo from "../images/propert.png";
-import "./Login.css"
-import Nav from "../components/Navbar"
+import "./Login.css";
+import Sso from "./SSO"
+
 
 export default function Login() {
   return (
   <div>
-    <div>
-      <Nav />
-    </div>
+    
     <div className="login-box">
       <a href="https://www.youtube.com" > <img className="sign" src={Logo} alt="Logo" /></a>
       <h2>Sign In</h2>
@@ -16,7 +15,7 @@ export default function Login() {
 
       <form>
         <div className="user-box">
-          <label className="dany">User ID</label>
+          <label className="head">Email</label>
           <input  type="text" name="" required />
         </div>
 
@@ -37,8 +36,14 @@ export default function Login() {
               <span></span>
               Login
             </button>
+            
           </div>
         </div>
+        
+        
+        <button className="kkk">
+          <Sso  className="dany"/> 
+         </button>
       </form>
     </div>
   </div>

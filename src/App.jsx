@@ -1,7 +1,8 @@
+import Login from "./Login/login"
 function App() {
   return (
     <>
-      <h1>Welcome to the Jazeera Properties Management System!</h1>
+      <Login />
     </>
   )
 }
