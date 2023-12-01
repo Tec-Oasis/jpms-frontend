@@ -1,0 +1,15 @@
+#contact {
+  background-color: #fff;
+}
+
+.contact-header {
+  font-weight: 900;
+}
+
+.contact-address {
+  font-style: italic !important;
+  font-size: small;
+}
+
+.contact-info {
+}
