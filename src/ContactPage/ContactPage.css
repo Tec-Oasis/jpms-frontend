@@ -11,5 +11,7 @@
   font-size: small;
 }
 
-.contact-info {
+body {
+  background: url(../images/background-image-login.jpg);
+  background-size: cover;
 }

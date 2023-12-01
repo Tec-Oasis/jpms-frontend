@@ -5,12 +5,12 @@ import './ContactPage.css'
 const ContactPage = () => {
   return (
     <Container
-      className="p-5 mt-4 mb-4 w-75"
+      className="p-5 mt-4 mb-4"
       id="contact"
-      style={{ borderRadius: '25px' }}
+      style={{ borderRadius: '25px', width: '97%', maxWidth: '100%' }}
     >
       <Row style={{ alignItems: 'center' }}>
-        <Col className="p-5 col-5 contact-info">
+        <Col className="p-5 col-5">
           <div className="mb-5">
             <h1
               style={{ fontSize: '3rem' }}
@@ -40,7 +40,7 @@ const ContactPage = () => {
             Phone number <br />
           </address>
         </Col>
-        <Col className="p-4">
+        <Col>
           <ContactForm />
         </Col>
       </Row>
