@@ -1,0 +1,205 @@
+html
+{
+
+    height: 100%;
+}
+
+
+
+body
+{
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+     'Open Sans', 'Helvetica Neue', sans-serif;
+    background-image: url("../images/background-image-login.jpg");
+    background-size: cover;
+    background-position: center;
+  
+}
+
+.login-box
+{
+    position: absolute;
+    top: 60%;
+    left: 52%;
+    width: 480px;
+    padding: 40px;
+    transform: translate(-60%,-60%);
+    background: white;
+    border-radius: 20px;
+}
+
+/* Add this styling in your CSS file or component */
+
+form {
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  input,
+  select {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+  }
+  
+  .icon-container {
+    display: flex;
+    align-items: center; /* Center vertically within the flex container */
+  }
+  
+  .kkk{
+    display: flex;
+    align-items: center; 
+    vertical-align: top;
+    margin-right: 10px; /* Adjust margin as needed */
+    padding: 6px 6px;
+    font-size: 16px;
+    background-color: transparent;
+    border-radius: 25px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+      'Open Sans', 'Helvetica Neue', sans-serif;
+    transition: 0.5s;
+    width: 100px;
+    color: RGB(108, 117, 125);
+    border: 1px solid;
+  
+  }
+  .dany {
+    vertical-align: top;
+    margin-right: 10px; /* Adjust margin as needed */
+    padding: 6px 6px;
+    font-size: 16px;
+    width: 60px;
+    border-color: black;
+    border-radius: 100px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+      'Open Sans', 'Helvetica Neue', sans-serif;
+    transition: 0.5s;
+      
+  }
+  .kkk:hover
+  {
+    box-shadow: 5px 5px 10px rgba(116, 112, 112, 0.15);
+    cursor: pointer;
+    
+  }
+ 
+  
+  .submit-button {
+    margin-left: 170px;
+    padding: 6px 12px;
+    font-size: 16px;
+    background-color: transparent;
+    color: RGB(108, 117, 125);
+    width: 111px;
+    border: 1px solid;
+    border-radius: 25px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Open Sans', 'Helvetica Neue', sans-serif;
+    transition: 0.5s;
+  }
+  
+  
+  .submit-button:hover
+  {
+      box-shadow: 5px 5px 10px rgba(0,0,0,0.15);
+      cursor: pointer;
+      color: blue;
+      background-color: rgba(0, 0, 255, 0.045);
+  }
+  
+
+input 
+{
+    margin-top: 5px;
+    position: relative;
+    display: grid;
+    height: 40px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+}
+
+input[type="date"] {
+    text-align: right;
+    size: 50px;
+  }
+
+  .login-box h2
+{
+    margin: 0 0 30px;
+    padding: 0;
+    color: blue;
+    text-align: center;
+    font-weight: 100;
+    margin-bottom: 10px;
+}
+hr
+{
+    margin-bottom: 30px;
+}
+
+.gender
+{
+    margin-top: 5px;
+    position: relative;
+    display: grid;
+    height: 40px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+}
+
+
+input[type="text"], input[type="email"], input[type="date"]{
+    border-radius: 30px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s; /* Add a smooth transition effect for the border color */
+}
+
+
+input[type="text"]:hover, input[type="email"]:hover, input[type="date"]:hover {
+    border-color: blue;
+}
+select
+{
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    background-color: #fff; /* Set the background color of the selector */ 
+    border: 1px solid #ccc; /* Set the border color of the selector */
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+select:hover
+{
+    border-color: blue;
+}
+label
+{
+    color: blue;
+}
+
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #f5f5f5; /* Set a neutral background color */
+    color: #333; /* Set the text color */
+    border: 1px solid #ccc; /* Set the border color */
+    border-radius: 100px;
+    outline: none; /* Remove default focus outline */
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+  }
+  input[type="date"]:focus {
+    background-color: #fff; /* Set a different color when focused */
+    border-color: #007bff; /* Set a different border color when focused */
+  }
