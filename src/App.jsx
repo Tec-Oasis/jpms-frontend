@@ -1,10 +1,14 @@
-import Login from "./Login/login"
-function App() {
+import Login from "./Login/login";
+import Signup from "./signup/SignUp";
+
+const App = () => {
   return (
+    
     <>
-      <Login />
+    <Login />
     </>
-  )
-}
+    
+  );
+};
 
 export default App
