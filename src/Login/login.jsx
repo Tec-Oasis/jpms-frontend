@@ -1,12 +1,13 @@
 import React from "react";
 import Logo from "../images/propert.png";
+
 import "./Login.css";
 import Sso from "./SSO"
-
 
 export default function Login() {
   return (
   <div>
+
     
     <div className="login-box">
       <a href="https://www.youtube.com" > <img className="sign" src={Logo} alt="Logo" /></a>
@@ -15,7 +16,9 @@ export default function Login() {
 
       <form>
         <div className="user-box">
+
           <label className="head">Email</label>
+
           <input  type="text" name="" required />
         </div>
 
@@ -44,6 +47,7 @@ export default function Login() {
         <button className="kkk">
           <Sso  className="dany"/> 
          </button>
+
       </form>
     </div>
   </div>
