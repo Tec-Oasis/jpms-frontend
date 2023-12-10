@@ -86,10 +86,10 @@ const SignUp = () => {
           </select>
         </label>
 
-        <div class="icon-container">
+        <div className="icon-container">
           <Sso className="dany" />
 
-          <button class="submit-button-signup">SignUp</button>
+          <button className="submit-button-signup">SignUp</button>
         </div>
       </form>
     </div>
