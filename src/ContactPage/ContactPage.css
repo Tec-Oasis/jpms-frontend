@@ -1,0 +1,17 @@
+#contact {
+  background-color: #fff;
+}
+
+.contact-header {
+  font-weight: 900;
+}
+
+.contact-address {
+  font-style: italic !important;
+  font-size: small;
+}
+
+body {
+  background: url(../images/background-image-login.jpg);
+  background-size: cover;
+}

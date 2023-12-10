@@ -1,12 +1,14 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import PropertyList from './PropertyList'
-import Login from './Login/login.jsx'
-import SignUp from './signup/SignUp.jsx'
+
+import ContactPage from './ContactPage'
+import Navbar from './components/Navbar'
 
 function App() {
   return (
     <>
-      <Login />
+      <Navbar />
+      <ContactPage />
     </>
   )
 }
