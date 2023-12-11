@@ -2,9 +2,11 @@ import { Image, Row, Col } from 'react-bootstrap'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import './PropertyDetails.css'
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 
 const PropertyDetails = ({ property, show, handleClose }) => {
-  const { img, name, desc, rent, location, amenities } = property
+  const { img, name, desc, rent, location, amenities,coordinate_x, coordinate_y  } = property
 
   return (
     <Modal size="lg" show={show} onHide={handleClose}>
@@ -54,6 +56,22 @@ const PropertyDetails = ({ property, show, handleClose }) => {
               ))}
             </ul>
           </Col>
+          <Col >
+            <MapContainer
+              center={[parseFloat(coordinate_x), parseFloat(coordinate_y)]}
+              zoom={10}
+              style={{ height: '302px', width: '450px' }}
+            >
+              {<TileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                language="en"
+              /> }
+              <Marker position={[parseFloat(coordinate_x), parseFloat(coordinate_y)]}>
+               
+              </Marker>
+            </MapContainer>
+          </Col>
+
         </Row>
       </Modal.Body>
       <Modal.Footer>

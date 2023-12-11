@@ -1,16 +1,17 @@
-import { useState } from 'react'
-import Button from 'react-bootstrap/Button'
-import Card from 'react-bootstrap/Card'
-import './PropertyCard.css'
-import PropertyDetails from './PropertyDetails/PropertyDetails'
 
-const PropertyCard = ({ property }) => {
-  const { img, name, desc } = property
+import React from 'react';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import PropertyDetails from './PropertyDetails/PropertyDetails';
 
-  const [showDetails, setShowDetails] = useState(false)
+const PropertyCard = ({ property, handleMarkerClick }) => {
+  const { img, name, description, rent, location, amenities, coordinate_x, coordinate_y } = property;
 
-  const handleClose = () => setShowDetails(false)
-  const handleShow = () => setShowDetails(true)
+  const [showDetails, setShowDetails] = React.useState(false);
+
+  const handleClose = () => setShowDetails(false);
+  const handleShow = () => setShowDetails(true);
+ 
 
   return (
     <>
@@ -18,19 +19,19 @@ const PropertyCard = ({ property }) => {
         <Card.Img variant="top" src={img} className="property-img" />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
-          <Card.Text>{desc}</Card.Text>
-          <Button variant="primary" onClick={handleShow}>
+          <Card.Text>{description}</Card.Text>
+          <Button variant="primary" onClick={() => {  handleShow(); }}>
             Learn more
           </Button>
         </Card.Body>
       </Card>
       <PropertyDetails
-        property={property}
+        property={{ img, name, description, rent, location, amenities, coordinate_x, coordinate_y }}
         show={showDetails}
         handleClose={handleClose}
       />
     </>
-  )
-}
+  );
+};
 
-export default PropertyCard
+export default PropertyCard;

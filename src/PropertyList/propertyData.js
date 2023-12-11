@@ -14,6 +14,7 @@ const propertyData = [
       'Parking Space',
       'Terrace with Marina view',
     ],
+    lat: 25.1234, lng: 55.5678
   },
   {
     img: 'https://images.unsplash.com/photo-1460317442991-0ec209397118',
@@ -28,6 +29,7 @@ const propertyData = [
       'Balcony with City View',
       'Parking',
     ],
+    lat: 25.2345, lng: 55.6789
   },
   {
     img: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00',
@@ -44,6 +46,7 @@ const propertyData = [
       'Parking Space',
       'Terrace with Marina view',
     ],
+    lat: 25.7734, lng: 55.7777
   },
   {
     img: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994',
@@ -58,6 +61,7 @@ const propertyData = [
       'Balcony with City View',
       'Parking',
     ],
+    lat: 24.7734, lng: 54.7777 
   },
   {
     img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c',
@@ -72,6 +76,7 @@ const propertyData = [
       'Security',
       'Parking',
     ],
+    lat: 25.7777, lng: 55.7237
   },
   {
     img: 'https://images.unsplash.com/photo-1572120360610-d971b9d7767c',
@@ -87,6 +92,7 @@ const propertyData = [
       'Parking',
       'Balcony',
     ],
+    lat: 25.122, lng: 55.1234
   },
   {
     img: 'https://images.unsplash.com/photo-1598228723793-52759bba239c',
@@ -101,6 +107,7 @@ const propertyData = [
       'Maids Room',
       'Security',
     ],
+    lat: 25.7349, lng: 55.12323
   },
   {
     img: 'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09',
@@ -115,6 +122,7 @@ const propertyData = [
       'Balcony',
       'Parking',
     ],
+    lat: 25.1234243, lng: 55.23324
   },
 ]
 
