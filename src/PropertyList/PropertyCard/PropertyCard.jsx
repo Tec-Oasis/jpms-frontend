@@ -5,7 +5,7 @@ import './PropertyCard.css'
 import PropertyDetails from './PropertyDetails/PropertyDetails'
 
 const PropertyCard = ({ property }) => {
-  const { img, name, desc } = property
+  const { img, name, description } = property
 
   const [showDetails, setShowDetails] = useState(false)
 
@@ -18,7 +18,7 @@ const PropertyCard = ({ property }) => {
         <Card.Img variant="top" src={img} className="property-img" />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
-          <Card.Text>{desc}</Card.Text>
+          <Card.Text>{description}</Card.Text>
           <Button variant="primary" onClick={handleShow}>
             Learn more
           </Button>
