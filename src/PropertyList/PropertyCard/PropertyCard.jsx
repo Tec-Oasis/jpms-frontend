@@ -14,7 +14,7 @@ const PropertyCard = ({ property }) => {
 
   return (
     <>
-      <Card>
+      <Card className="property-card">
         <Card.Img variant="top" src={img} className="property-img" />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
