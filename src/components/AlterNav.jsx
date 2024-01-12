@@ -12,6 +12,11 @@ function AlterNav() {
           <Nav.Link href="/contact">Contact</Nav.Link>
           <Nav.Link href="/tenant/bookings">My Bookings</Nav.Link>
         </Nav>
+        <Navbar.Collapse className="justify-content-end">
+          <Navbar.Text>
+           <a href="#login">Sign In</a>
+          </Navbar.Text>
+        </Navbar.Collapse>
       </Container>
     </Navbar>
   );
