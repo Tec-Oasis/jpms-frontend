@@ -16,7 +16,7 @@ const BookingDetails = () => {
 
   return (
     <>
-      <div style={{ marginBottom: "20px"}}>
+      <div style={{ marginBottom: "20px" }}>
         <AlterNav />
       </div>
       <>
@@ -66,7 +66,7 @@ const BookingDetails = () => {
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
                     <Card.Text>Original price</Card.Text>
-                    <Card.Text>MYR 2500</Card.Text>
+                    <Card.Text>MYR 1000</Card.Text>
                   </div>
                 </Card.Body>
               </Card>
@@ -82,6 +82,7 @@ const BookingDetails = () => {
                         <Form.Group className="mb-3" controlId="">
                           <Form.Label>First Name</Form.Label>
                           <Form.Control
+                            id="firstName"
                             type="text"
                             placeholder="Please enter your first name"
                           />
@@ -91,6 +92,7 @@ const BookingDetails = () => {
                         <Form.Group className="mb-3" controlId="">
                           <Form.Label>Last Name</Form.Label>
                           <Form.Control
+                            id="lastName"
                             type="text"
                             placeholder="Please enter your last name"
                           />
@@ -101,6 +103,7 @@ const BookingDetails = () => {
                     <Form.Group className="mb-3" controlId="">
                       <Form.Label>IC Number</Form.Label>
                       <Form.Control
+                        id="icNumber"
                         type="text"
                         placeholder="Please enter your IC Number"
                       />
@@ -109,24 +112,57 @@ const BookingDetails = () => {
                       <Form.Label>Phone Number</Form.Label>
                       <Form.Control
                         type="tel"
+                        id="phoneNumber"
                         placeholder="Please enter your phone number"
                       />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="">
                       <Form.Label>Email Address</Form.Label>
                       <Form.Control
+                        id="emailAddress"
                         type="email"
                         placeholder="Please enter your email"
                       />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="">
                       <Form.Label>Special requests</Form.Label>
-                      <Form.Control as="textarea" rows={5} />
+                      <Form.Control
+                        id="specialRequests"
+                        as="textarea"
+                        rows={5}
+                      />
                     </Form.Group>
                   </Card.Body>
                 </Card>
                 <div style={{ display: "flex", flexDirection: "row-reverse" }}>
-                  <Button onClick={()=>navigate('/booking/final')} className="mb-3 mt-3">Next: Payment</Button>
+                  <Button
+                    onClick={() => {
+                      const firstName =
+                        document.getElementById("firstName").value;
+                      const lastName =
+                        document.getElementById("lastName").value;
+                      const icNumber =
+                        document.getElementById("icNumber").value;
+                      const phoneNumber =
+                        document.getElementById("phoneNumber").value;
+                      const emailAddress =
+                        document.getElementById("emailAddress").value;
+                      const specialRequests =
+                        document.getElementById("specialRequests").value;
+
+                      console.log("First Name:", firstName);
+                      console.log("Last Name:", lastName);
+                      console.log("IC Number:", icNumber);
+                      console.log("Phone Number:", phoneNumber);
+                      console.log("Email Address:", emailAddress);
+                      console.log("Special Requests:", specialRequests);
+
+                      navigate("/booking/final");
+                    }}
+                    className="mb-3 mt-3"
+                  >
+                    Next: Payment
+                  </Button>
                 </div>
               </Form>
             </Col>

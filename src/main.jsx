@@ -1,20 +1,15 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { Auth0Provider } from '@auth0/auth0-react'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Auth0Provider } from "@auth0/auth0-react";
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import App from './App'
-import BookingDetails from './BookingDetails/BookingDetails'
-import FinalDetails from './FinalDetails/FinalDetails'
-import CustomerBookings from './CustomerBookings/CustomerBookings'
-import ContactPage from './ContactPage'
-
-
-
+import App from "./App";
+import BookingDetails from "./BookingDetails/BookingDetails";
+import FinalDetails from "./FinalDetails/FinalDetails";
+import CustomerBookings from "./CustomerBookings/CustomerBookings";
+import ContactPage from "./ContactPage";
+import PaymentSuccess from "./PaymentSuccess";
 
 const router = createBrowserRouter([
   {
@@ -37,10 +32,13 @@ const router = createBrowserRouter([
     path: "/contact",
     element: <ContactPage />,
   },
-
+  {
+    path: "/paymentSuccess",
+    element: <PaymentSuccess />,
+  },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Auth0Provider
       domain="dev-zmqxdvzto7imu71d.us.auth0.com"
@@ -50,4 +48,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <RouterProvider router={router} />
     </Auth0Provider>
   </React.StrictMode>
-)
+);

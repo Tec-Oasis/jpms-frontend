@@ -64,7 +64,7 @@ const FinalDetails = () => {
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
                     <Card.Text>Original price</Card.Text>
-                    <Card.Text>MYR 2500</Card.Text>
+                    <Card.Text>MYR 1000</Card.Text>
                   </div>
                 </Card.Body>
               </Card>
@@ -81,7 +81,10 @@ const FinalDetails = () => {
                   </Card.Body>
                 </Card>
                 <div style={{ display: "flex", flexDirection: "row-reverse" }}>
-                  <Button className="mb-3 mt-3">Next: Payment</Button>
+                <form action="http://localhost:3000/stripe/checkout" method="POST">
+                  <Button type="submit" className="mb-3 mt-3">Next: Payment</Button>
+                </form>
+                  
                 </div>
               </Form>
             </Col>
