@@ -12,7 +12,7 @@ import Login from './Login/login.jsx';
 function App() {
   return (
     <>
-      <PropertyList/>
+      <PropertyMap/>
     </>
   )
 }
