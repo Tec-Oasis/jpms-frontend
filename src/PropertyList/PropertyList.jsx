@@ -5,8 +5,11 @@ import PropertyCard from './PropertyCard/PropertyCard'
 const PropertyList = () => {
   const [propertyData, setPropertyData] = useState([])
 
+  const production_api = "https://dolphin-app-7ux4p.ondigitalocean.app";
+  const development_api = "http://localhost:3000";
+
   useEffect(() => {
-    fetch('https://dolphin-app-7ux4p.ondigitalocean.app/properties')
+    fetch(`${development_api}/properties`)
       .then((res) => {
         return res.json()
       })
