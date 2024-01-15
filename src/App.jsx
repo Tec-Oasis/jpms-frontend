@@ -9,7 +9,9 @@ import FinalDetails from './FinalDetails/FinalDetails'
 // import Navbar from './components/Navbar'
 
 function App() {
+
   return <PropertyMap />
+
 }
 
 export default App
