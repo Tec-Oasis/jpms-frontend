@@ -43,10 +43,6 @@ const propertyData = [
 const CustomerBookings = () => {
   const { isAuthenticated, isLoading } = useAuth0();
 
-  useEffect(() => {
-    console.log("isAuthenticated", isAuthenticated);
-  }, []);
-
   if (isLoading) {
     return <PageLoader />;
   }
@@ -63,7 +59,7 @@ const CustomerBookings = () => {
             Active Contracts
           </p>
           {propertyData.map((property) => (
-            <div style={{ marginBottom: "24px" }}>
+            <div key={property.name} style={{ marginBottom: "24px" }}>
               <PropertyCard property={property} />
             </div>
           ))}

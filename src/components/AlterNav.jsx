@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -6,10 +6,8 @@ import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
 
 function AlterNav() {
-  const { loginWithRedirect, logout } = useAuth0();
-  
-  // check isLoggedIn in localstorage
-  const isLogged = localStorage.getItem("isLoggedIn");
+  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     loginWithRedirect({
@@ -23,22 +21,26 @@ function AlterNav() {
   };
 
   const handleLogout = () => {
-    logout({ logoutParams: { returnTo: window.location.origin } })
-    localStorage.removeItem("isLoggedIn");
+    logout({ logoutParams: { returnTo: window.location.origin } });
+    localStorage.removeItem("user");
   };
 
   return (
     <Navbar bg="primary" data-bs-theme="dark">
       <Container>
-        <Navbar.Brand href="/">Jazeera Real Estate</Navbar.Brand>
+        <Navbar.Brand>Jazeera Real Estate</Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/contact">Contact</Nav.Link>
-          {isLogged && <Nav.Link href="/tenant/bookings">My Bookings</Nav.Link>}
+          <Button onClick={() => navigate("/")}>Home</Button>
+          <Button onClick={() => navigate("/contact")}>Contact</Button>
+          {isAuthenticated && (
+            <Button onClick={() => navigate("/tenant/bookings")}>
+              My Bookings
+            </Button>
+          )}
         </Nav>
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
-            {isLogged ? (
+            {isAuthenticated ? (
               <Button style={{ marginLeft: 10 }} onClick={() => handleLogout()}>
                 {" "}
                 Logout{" "}

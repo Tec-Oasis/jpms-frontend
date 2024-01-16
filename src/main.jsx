@@ -27,7 +27,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/tenant/bookings",
-    element: <CustomerBookings />,
+    element: <AuthenticationGuard component={CustomerBookings} />,
   },
   {
     path: "/contact",
