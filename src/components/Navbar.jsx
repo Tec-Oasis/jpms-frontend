@@ -35,6 +35,16 @@ export default function Navbar() {
             Properties
           </a>
         </li>
+        
+        <li style={{ marginRight: "20px" , marginTop: "10px"}}>
+          <a  
+            className="icon" 
+            href="#" 
+            style={{ textDecoration: "none", color: "#fff" }}
+            >Map
+          </a>
+        </li>
+
         <li>
           <button className="signup_button_homepage" href="#">
             Sign In

@@ -4,6 +4,10 @@ import PropertyList from './PropertyList'
 import AlterNav from './components/AlterNav'
 
 // function App() {
+
+//   return <PropertyMap />
+
+// function App() {
 //   return <FinalDetails />
 // }
 

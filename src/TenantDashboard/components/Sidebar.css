@@ -1,0 +1,60 @@
+
+  .menu{
+    display: flex;
+    flex-direction: column;
+    gap: 2.3em;
+    height:94vh;
+  }
+  .menu--list{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+  }
+.menu--list .item{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 1.1rem;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 10px;
+  transition: 0.3s ease-in-out;
+  color: #27374d;
+}
+.menu--list .item:hover{
+background: #27374d;
+color: dde6ed;
+}
+.menu--list .item .total-box {
+  background-color: #f0f4f8;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+ 
+  width: 282px; 
+}
+
+.menu--list .item .total-box .icon {
+  margin-bottom: 10px; 
+}
+
+.menu--list .item .total-box .icon svg {
+  fill: #27374d; 
+}
+
+.menu--list .item .total-box h5 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  
+  color: #596a7d;
+}
+
+.menu--list .item .total-box p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  
+  color: #27374d;
+}
