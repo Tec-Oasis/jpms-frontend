@@ -1,10 +1,13 @@
 import { Image, Row, Col } from 'react-bootstrap'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
+import { useNavigate } from 'react-router-dom'
 import './PropertyDetails.css'
 
 const PropertyDetails = ({ property, show, handleClose }) => {
   const { img, name, desc, rent, location, amenities } = property
+
+  const navigate = useNavigate();
 
   return (
     <Modal size="lg" show={show} onHide={handleClose}>
@@ -60,6 +63,7 @@ const PropertyDetails = ({ property, show, handleClose }) => {
         <Button variant="secondary" onClick={handleClose}>
           Close
         </Button>
+        <Button onClick={() => navigate("/booking")} variant="primary">Book This Property</Button> 
       </Modal.Footer>
     </Modal>
   )
