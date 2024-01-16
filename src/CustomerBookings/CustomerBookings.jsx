@@ -1,6 +1,9 @@
+import { useAuth0 } from "@auth0/auth0-react";
 import { Container } from "react-bootstrap";
 import PropertyCard from "./PropertyCard/PropertyCard";
 import AlterNav from "../components/AlterNav";
+import { PageLoader } from "../components/page-loader";
+import { useEffect } from "react";
 
 const propertyData = [
   {
@@ -38,7 +41,17 @@ const propertyData = [
 ];
 
 const CustomerBookings = () => {
-  return (
+  const { isAuthenticated, isLoading } = useAuth0();
+
+  useEffect(() => {
+    console.log("isAuthenticated", isAuthenticated);
+  }, []);
+
+  if (isLoading) {
+    return <PageLoader />;
+  }
+
+  return isAuthenticated ? (
     <>
       <AlterNav />
       <>
@@ -56,6 +69,19 @@ const CustomerBookings = () => {
           ))}
         </Container>
       </>
+    </>
+  ) : (
+    <>
+      <AlterNav />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <h1 style={{ marginTop: 30 }}>You are not logged in</h1>
+      </div>
     </>
   );
 };
