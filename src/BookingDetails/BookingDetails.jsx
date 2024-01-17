@@ -1,18 +1,48 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { Form, Row, Col, Card, Container, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import AlterNav from "../components/AlterNav";
 import "./BookingDetails.css";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const BookingDetails = () => {
-  const property = {
-    name: "Property 1",
-    location: "Dubai Marina Bay, Dubai",
-    rent: 2500,
-  };
+  const [property, setProperty] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const url = `${import.meta.env.VITE_API_SERVER_URL}properties/${id}`;
+        const response = await axios.get(url);
+        console.log(response.data);
+        setProperty(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // const property = {
+  //   name: "Property 1",
+  //   location: "Dubai Marina Bay, Dubai",
+  //   rent: 2500,
+  // };
 
   const navigate = useNavigate();
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   const { img, name, desc, rent, location, amenities } = property;
+
+  const { user: loggedUser } = useAuth0();
 
   return (
     <>
@@ -25,6 +55,11 @@ const BookingDetails = () => {
             <Col xxl="4">
               <Card className="mb-3">
                 <Card.Body>
+                  <Card.Img
+                    style={{ borderRadius: 20, marginBottom: 20 }}
+                    variant="top"
+                    src={img}
+                  />
                   <Card.Title>{name}</Card.Title>
 
                   <Card.Text>{location}</Card.Text>
@@ -41,8 +76,7 @@ const BookingDetails = () => {
                   >
                     Mon, Jan 1, 2024
                   </Card.Text>
-                  <Card.Text className="text-muted">From 3:00 PM</Card.Text>
-
+                  <br />
                   <Card.Text className="mb-0">Contract ending date</Card.Text>
                   <Card.Text
                     className="mb-0"
@@ -50,12 +84,12 @@ const BookingDetails = () => {
                   >
                     Tue, Dec 31, 2024
                   </Card.Text>
-                  <Card.Text className="text-muted">Until 12:00 PM</Card.Text>
+                  <br />
 
                   <Card.Text className="mb-1">
                     Total length of contract:
                   </Card.Text>
-                  <Card.Text style={{ fontWeight: "bold" }}>3 Nights</Card.Text>
+                  <Card.Text style={{ fontWeight: "bold" }}>One Year</Card.Text>
                 </Card.Body>
               </Card>
               <Card className="mb-3">
@@ -80,21 +114,12 @@ const BookingDetails = () => {
                     <Row>
                       <Col>
                         <Form.Group className="mb-3" controlId="">
-                          <Form.Label>First Name</Form.Label>
+                          <Form.Label>Full Name</Form.Label>
                           <Form.Control
-                            id="firstName"
+                            id="fullname"
                             type="text"
-                            placeholder="Please enter your first name"
-                          />
-                        </Form.Group>
-                      </Col>
-                      <Col>
-                        <Form.Group className="mb-3" controlId="">
-                          <Form.Label>Last Name</Form.Label>
-                          <Form.Control
-                            id="lastName"
-                            type="text"
-                            placeholder="Please enter your last name"
+                            placeholder="Please enter your name"
+                            value={loggedUser && loggedUser.name}
                           />
                         </Form.Group>
                       </Col>
@@ -122,6 +147,7 @@ const BookingDetails = () => {
                         id="emailAddress"
                         type="email"
                         placeholder="Please enter your email"
+                        value={loggedUser && loggedUser.email}
                       />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="">
@@ -136,11 +162,9 @@ const BookingDetails = () => {
                 </Card>
                 <div style={{ display: "flex", flexDirection: "row-reverse" }}>
                   <Button
-                    onClick={() => {
-                      const firstName =
-                        document.getElementById("firstName").value;
-                      const lastName =
-                        document.getElementById("lastName").value;
+                    onClick={async () => {
+                      const fullname =
+                        document.getElementById("fullname").value;
                       const icNumber =
                         document.getElementById("icNumber").value;
                       const phoneNumber =
@@ -150,14 +174,21 @@ const BookingDetails = () => {
                       const specialRequests =
                         document.getElementById("specialRequests").value;
 
-                      console.log("First Name:", firstName);
-                      console.log("Last Name:", lastName);
+                      console.log("Full Name:", fullname);
                       console.log("IC Number:", icNumber);
                       console.log("Phone Number:", phoneNumber);
                       console.log("Email Address:", emailAddress);
                       console.log("Special Requests:", specialRequests);
 
-                      navigate("/booking/final");
+                      await axios.post(
+                        `${import.meta.env.VITE_API_SERVER_URL}/my_contracts`,
+                        {
+                          auth0_id: loggedUser.sub,
+                          property_id: id,
+                        }
+                      );
+
+                      navigate(`/booking/final/${id}`);
                     }}
                     className="mb-3 mt-3"
                   >
