@@ -1,13 +1,42 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+import { useParams } from "react-router-dom";
 import { Form, Row, Col, Card, Container, Button } from "react-bootstrap";
 
 import AlterNav from "../components/AlterNav";
 
 const FinalDetails = () => {
-  const property = {
-    name: "Property 1",
-    location: "Dubai Marina Bay, Dubai",
-    rent: 2500,
-  };
+  const [property, setProperty] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const url = `${import.meta.env.VITE_API_SERVER_URL}/properties/${id}`;
+        const response = await axios.get(url);
+        console.log(response.data);
+        setProperty(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // const property = {
+  //   name: "Property 1",
+  //   location: "Dubai Marina Bay, Dubai",
+  //   rent: 2500,
+  // };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   const { img, name, desc, rent, location, amenities } = property;
 
@@ -23,6 +52,11 @@ const FinalDetails = () => {
             <Col xxl="4">
               <Card className="mb-3">
                 <Card.Body>
+                  <Card.Img
+                    style={{ borderRadius: 20, marginBottom: 20 }}
+                    variant="top"
+                    src={img}
+                  />
                   <Card.Title>{name}</Card.Title>
 
                   <Card.Text>{location}</Card.Text>
@@ -39,8 +73,7 @@ const FinalDetails = () => {
                   >
                     Mon, Jan 1, 2024
                   </Card.Text>
-                  <Card.Text className="text-muted">From 3:00 PM</Card.Text>
-
+                  <br />
                   <Card.Text className="mb-0">Contract ending date</Card.Text>
                   <Card.Text
                     className="mb-0"
@@ -48,12 +81,12 @@ const FinalDetails = () => {
                   >
                     Tue, Dec 31, 2024
                   </Card.Text>
-                  <Card.Text className="text-muted">Until 12:00 PM</Card.Text>
+                  <br />
 
                   <Card.Text className="mb-1">
                     Total length of contract:
                   </Card.Text>
-                  <Card.Text style={{ fontWeight: "bold" }}>3 Nights</Card.Text>
+                  <Card.Text style={{ fontWeight: "bold" }}>One Year</Card.Text>
                 </Card.Body>
               </Card>
               <Card className="mb-3">
@@ -75,16 +108,33 @@ const FinalDetails = () => {
                   <Card.Body>
                     <Card.Title>When do you want to pay</Card.Title>
 
-                    <Form.Check type="radio" label="Pay Now" id="paynow" />
+                    <Form.Check
+                      type="radio"
+                      label="Pay Now"
+                      id="paynow"
+                      style={{ fontSize: "1.2em" }}
+                    />
 
-                    <Form.Check type="radio" label="Pay Later" id="paylater" />
+                    <Form.Check
+                      type="radio"
+                      label="Pay Later -> feautre coming soon!"
+                      style={{ fontSize: "1.2em" }}
+                      id="paylater"
+                      disabled
+                    />
                   </Card.Body>
                 </Card>
                 <div style={{ display: "flex", flexDirection: "row-reverse" }}>
-                <form action="http://localhost:3000/stripe/checkout" method="POST">
-                  <Button type="submit" className="mb-3 mt-3">Next: Payment</Button>
-                </form>
-                  
+                  <form
+                    action={`${
+                      import.meta.env.VITE_API_SERVER_URL
+                    }/stripe/checkout`}
+                    method="POST"
+                  >
+                    <Button type="submit" className="mb-3 mt-3">
+                      Next: Payment
+                    </Button>
+                  </form>
                 </div>
               </Form>
             </Col>

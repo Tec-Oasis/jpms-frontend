@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import './PropertyDetails.css'
 
 const PropertyDetails = ({ property, show, handleClose }) => {
-  const { img, name, desc, rent, location, amenities } = property
+  const { img, name, desc, rent, location, amenities, id } = property
 
   const navigate = useNavigate();
 
@@ -63,7 +63,7 @@ const PropertyDetails = ({ property, show, handleClose }) => {
         <Button variant="secondary" onClick={handleClose}>
           Close
         </Button>
-        <Button onClick={() => navigate("/booking")} variant="primary">Book This Property</Button> 
+        <Button onClick={() => navigate(`/booking/${id}`)} variant="primary">Book This Property</Button> 
       </Modal.Footer>
     </Modal>
   )
