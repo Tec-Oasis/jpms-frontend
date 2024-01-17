@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Container } from "react-bootstrap";
 import PropertyCard from "./PropertyCard/PropertyCard";
@@ -89,7 +90,9 @@ const CustomerBookings = () => {
           </p>
           {propertyData.map((property) => (
             <div key={property.name} style={{ marginBottom: "24px" }}>
-              <PropertyCard property={property} />
+              <Link style={{ textDecoration: "none" }} to={"/tenantDashboard"}>
+                <PropertyCard property={property} />
+              </Link>
             </div>
           ))}
         </Container>

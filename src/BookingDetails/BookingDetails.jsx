@@ -15,7 +15,7 @@ const BookingDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = `${import.meta.env.VITE_API_SERVER_URL}properties/${id}`;
+        const url = `${import.meta.env.VITE_API_SERVER_URL}/properties/${id}`;
         const response = await axios.get(url);
         console.log(response.data);
         setProperty(response.data);

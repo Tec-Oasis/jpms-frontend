@@ -31,6 +31,7 @@ function AlterNav() {
         <Navbar.Brand>Jazeera Real Estate</Navbar.Brand>
         <Nav className="me-auto">
           <Button onClick={() => navigate("/")}>Home</Button>
+          <Button onClick={() => navigate("/propertyMap")}>Property Map</Button>
           <Button onClick={() => navigate("/contact")}>Contact</Button>
           {isAuthenticated && (
             <Button onClick={() => navigate("/tenant/bookings")}>
