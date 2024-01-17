@@ -1,0 +1,41 @@
+.property-card-customer-booking > .card-body {
+  padding: 24px;
+  display: flex;
+  height: 140.5px;
+}
+
+.property-card-customer-booking .card-img {
+  width: 120px;
+  height: auto;
+}
+
+.property-card-customer-booking .info-property-card-customer-booking {
+  margin-left: 24px;
+  width: 100%;
+}
+
+.property-card-customer-booking .info-property-card-customer-booking p {
+  padding: 0;
+  margin: 0;
+  margin-top: 8px;
+}
+
+.rent-property-card-customer-booking {
+  width: 13%;
+}
+
+.fab-property-card-customer-booking {
+  padding: 0px 16px;
+  position: relative;
+  bottom: 6px;
+}
+
+.fab-property-card-customer-booking button {
+  background-color: #fff;
+  border: 0;
+}
+
+.fab-property-card-customer-booking svg {
+  height: 20px;
+  width: 20px;
+}

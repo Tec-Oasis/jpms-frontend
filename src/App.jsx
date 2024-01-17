@@ -1,8 +1,23 @@
-function App() {
+import 'bootstrap/dist/css/bootstrap.min.css'
+import PropertyList from './PropertyList'
+// import Navbar from './components/Navbar'
+import AlterNav from './components/AlterNav'
+
+// function App() {
+
+//   return <PropertyMap />
+
+// function App() {
+//   return <FinalDetails />
+// }
+
+function App(){
   return (
-    <>
-      <h1>Welcome to the Jazeera Properties Management System!</h1>
-    </>
+    <div>
+      {/* <Navbar /> */}
+      <AlterNav />
+      <PropertyList />
+    </div>
   )
 }
 
