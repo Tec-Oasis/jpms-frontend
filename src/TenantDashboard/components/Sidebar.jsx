@@ -1,6 +1,6 @@
 import './Sidebar.css';
 import invoices from "../Invoices/invoiceData";
-import requests from "../MaintenanceRequests/MaintenanceRequestData.js";
+import requests from "../MaintenanceRequests/maintenanceRequestData.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileInvoice, faClock, faTools } from "@fortawesome/free-solid-svg-icons";
 

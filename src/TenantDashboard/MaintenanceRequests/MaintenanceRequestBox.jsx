@@ -1,5 +1,4 @@
-import React from 'react';
-import requests from './MaintenanceRequestData';
+import requests from './maintenanceRequestData.js';
 
 const MaintenanceRequestBox = () => {
   return (
