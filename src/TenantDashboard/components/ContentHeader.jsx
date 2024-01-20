@@ -6,7 +6,7 @@ const ContentHeader = () => {
     return (
         <div className="content--header">
             <FontAwesomeIcon icon={faHome} size="2x" className="header--icon" />
-            <h1 className="header--title">Rented Property</h1>
+            <h1 className="header--title">Active Property Contract</h1>
         </div>
     );
 };

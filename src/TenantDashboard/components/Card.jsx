@@ -13,7 +13,7 @@ const Card = ({ property }) => {
       <div className="card--content">
         <h2 className="card--title">{name}</h2>
         <p className="card--description">{desc}</p>
-        <p className="card--rent">Rent: ${rent}</p>
+        <p className="card--rent">Rent: MYR {rent}</p>
         <p className="card--location">Location: {location}</p>
         <ul className="card--amenities">
           {amenities.map((amenity, index) => (

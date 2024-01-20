@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Container } from "react-bootstrap";
 import PropertyCard from "./PropertyCard/PropertyCard";
@@ -56,12 +57,7 @@ const CustomerBookings = () => {
         const response = await axios.get(
           `${import.meta.env.VITE_API_SERVER_URL}/my_contracts?auth0_id=${
             user.sub
-          }`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
+          }`
         );
         setPropertyData(response.data);
       } catch (error) {
@@ -89,7 +85,9 @@ const CustomerBookings = () => {
           </p>
           {propertyData.map((property) => (
             <div key={property.name} style={{ marginBottom: "24px" }}>
-              <PropertyCard property={property} />
+              <Link style={{ textDecoration: "none" }} to={`/tenantDashboard/${property.property_id}`}>
+                <PropertyCard property={property} />
+              </Link>
             </div>
           ))}
         </Container>

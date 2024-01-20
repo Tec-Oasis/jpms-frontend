@@ -9,13 +9,16 @@ import { useAuth0 } from "@auth0/auth0-react";
 const BookingDetails = () => {
   const [property, setProperty] = useState({});
   const [loading, setLoading] = useState(true);
+  const [tenantInfo, setTenantInfo] = useState({});
+
+  const { user: loggedUser } = useAuth0();
 
   const { id } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = `${import.meta.env.VITE_API_SERVER_URL}properties/${id}`;
+        const url = `${import.meta.env.VITE_API_SERVER_URL}/properties/${id}`;
         const response = await axios.get(url);
         console.log(response.data);
         setProperty(response.data);
@@ -25,8 +28,18 @@ const BookingDetails = () => {
       }
     };
 
+    const getProfile = async () => {
+      const response = await axios.get(
+        `${
+          import.meta.env.VITE_API_SERVER_URL
+        }/customer_account/getTenantInfo?auth0_id=${loggedUser.sub}`
+      );
+      setTenantInfo(response.data);
+    };
+
     fetchData();
-  }, []);
+    getProfile();
+  }, [loggedUser]);
 
   // const property = {
   //   name: "Property 1",
@@ -40,9 +53,7 @@ const BookingDetails = () => {
     return <div>Loading...</div>;
   }
 
-  const { img, name, desc, rent, location, amenities } = property;
-
-  const { user: loggedUser } = useAuth0();
+  const { img, name, rent, location } = property;
 
   return (
     <>
@@ -100,7 +111,7 @@ const BookingDetails = () => {
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
                     <Card.Text>Original price</Card.Text>
-                    <Card.Text>MYR 1000</Card.Text>
+                    <Card.Text>MYR {rent}</Card.Text>
                   </div>
                 </Card.Body>
               </Card>
@@ -116,6 +127,7 @@ const BookingDetails = () => {
                         <Form.Group className="mb-3" controlId="">
                           <Form.Label>Full Name</Form.Label>
                           <Form.Control
+                            disabled
                             id="fullname"
                             type="text"
                             placeholder="Please enter your name"
@@ -131,6 +143,13 @@ const BookingDetails = () => {
                         id="icNumber"
                         type="text"
                         placeholder="Please enter your IC Number"
+                        value={tenantInfo && tenantInfo.ic_no}
+                        onChange={(e) =>
+                          setTenantInfo({
+                            ...tenantInfo,
+                            ic_no: e.target.value,
+                          })
+                        }
                       />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="">
@@ -139,12 +158,20 @@ const BookingDetails = () => {
                         type="tel"
                         id="phoneNumber"
                         placeholder="Please enter your phone number"
+                        value={tenantInfo && tenantInfo.phone_number}
+                        onChange={(e) =>
+                          setTenantInfo({
+                            ...tenantInfo,
+                            phone_number: e.target.value,
+                          })
+                        }
                       />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="">
                       <Form.Label>Email Address</Form.Label>
                       <Form.Control
                         id="emailAddress"
+                        disabled
                         type="email"
                         placeholder="Please enter your email"
                         value={loggedUser && loggedUser.email}
@@ -153,6 +180,7 @@ const BookingDetails = () => {
                     <Form.Group className="mb-3" controlId="">
                       <Form.Label>Special requests</Form.Label>
                       <Form.Control
+                        placeholder="Please enter your special requests or leave it blank if you have none"
                         id="specialRequests"
                         as="textarea"
                         rows={5}
@@ -192,7 +220,7 @@ const BookingDetails = () => {
                     }}
                     className="mb-3 mt-3"
                   >
-                    Next: Payment
+                    Next: Review your booking
                   </Button>
                 </div>
               </Form>

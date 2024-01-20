@@ -11,6 +11,9 @@ import PaymentSuccess from "./PaymentSuccess";
 import CallbackComp from "./components/CallbackComp";
 import { AuthenticationGuard } from "./components/authentication-guard";
 import { Auth0ProviderWithNavigate } from "./auth0-provider-with-navigate";
+import PropertyMap from "./PropertyList/PropertyMap/PropertyMap";
+import TenantDashboard from "./TenantDashboard/TenantDashboard";
+import ProfilePage from "./profilePage";
 
 const router = createBrowserRouter([
   {
@@ -38,12 +41,24 @@ const router = createBrowserRouter([
     element: <AuthenticationGuard component={CustomerBookings} />,
   },
   {
+    path: "/propertyMap",
+    element: <PropertyMap />,
+  },
+  {
+    path: "/tenantDashboard/:id",
+    element: <TenantDashboard />,
+  },
+  {
     path: "/contact",
     element: <ContactPage />,
   },
   {
-    path: "/paymentSuccess",
+    path: "/paymentSuccess/:id",
     element: <PaymentSuccess />,
+  },
+  {
+    path: "/profile",
+    element: <AuthenticationGuard component={ProfilePage} />,
   },
   {
     path: "/callback",
