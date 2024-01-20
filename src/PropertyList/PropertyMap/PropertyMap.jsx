@@ -1,13 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { useState, useEffect } from "react";
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { useState, useEffect } from "react";
+import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import PropertyCard from "../PropertyCard/PropertyCard";
-import { Col, Row, Container } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import AlterNav from "../../components/AlterNav";
-import "./PropertyMap.css";
 import MarkerIcon from "./MarkerIcon/MarkerIcon.png";
 
-const libraries = ["places"];
 const mapContainerStyle = {
   width: "80vw",
   height: "80vh",
@@ -39,7 +37,7 @@ const PropertyMap = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://dolphin-app-7ux4p.ondigitalocean.app/properties"
+          `${import.meta.env.VITE_API_SERVER_URL}/properties`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok.");
@@ -89,25 +87,28 @@ const PropertyMap = () => {
   return (
     <>
       <AlterNav />
-      <Container fluid className="map-container">
-        <Row className="places-container">
-          <Col md={8} style={{ display: "flex", flexDirection: "column" }}>
-            <GoogleMap
-              mapContainerStyle={mapContainerStyle}
-              zoom={10.5}
-              center={center}
-              onLoad={onLoad}
-            >
-              {/* Marker rendering is now handled in useEffect */}
-            </GoogleMap>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <GoogleMap
+          mapContainerStyle={mapContainerStyle}
+          zoom={10.5}
+          center={center}
+          onLoad={onLoad}
+        >
+          {/* Marker rendering is now handled in useEffect */}
+        </GoogleMap>
+
+        {selectedMarker && (
+          <Col md={3}>
+            <PropertyCard property={selectedMarker} />
           </Col>
-          {selectedMarker && (
-            <Col md={4} className="property-card-container">
-              <PropertyCard property={selectedMarker} />
-            </Col>
-          )}
-        </Row>
-      </Container>
+        )}
+      </div>
     </>
   );
 };

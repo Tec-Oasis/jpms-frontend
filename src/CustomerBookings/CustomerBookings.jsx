@@ -57,12 +57,7 @@ const CustomerBookings = () => {
         const response = await axios.get(
           `${import.meta.env.VITE_API_SERVER_URL}/my_contracts?auth0_id=${
             user.sub
-          }`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
+          }`
         );
         setPropertyData(response.data);
       } catch (error) {
@@ -90,7 +85,7 @@ const CustomerBookings = () => {
           </p>
           {propertyData.map((property) => (
             <div key={property.name} style={{ marginBottom: "24px" }}>
-              <Link style={{ textDecoration: "none" }} to={"/tenantDashboard"}>
+              <Link style={{ textDecoration: "none" }} to={`/tenantDashboard/${property.property_id}`}>
                 <PropertyCard property={property} />
               </Link>
             </div>

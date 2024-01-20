@@ -41,7 +41,7 @@ const Auth0ProviderWrapper = ({ children }) => {
       const performFunctionAfterLogin = async (user) => {
         try {
           // make post request to /customer_account/new and supply with user data
-          const { data } = await axios.post(
+          const response = await axios.post(
             `${import.meta.env.VITE_API_SERVER_URL}/customer_account/new`,
             {
               email: user.email,

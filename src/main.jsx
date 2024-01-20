@@ -13,6 +13,7 @@ import { AuthenticationGuard } from "./components/authentication-guard";
 import { Auth0ProviderWithNavigate } from "./auth0-provider-with-navigate";
 import PropertyMap from "./PropertyList/PropertyMap/PropertyMap";
 import TenantDashboard from "./TenantDashboard/TenantDashboard";
+import ProfilePage from "./profilePage";
 
 const router = createBrowserRouter([
   {
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
     element: <PropertyMap />,
   },
   {
-    path: "/tenantDashboard",
+    path: "/tenantDashboard/:id",
     element: <TenantDashboard />,
   },
   {
@@ -52,8 +53,12 @@ const router = createBrowserRouter([
     element: <ContactPage />,
   },
   {
-    path: "/paymentSuccess",
+    path: "/paymentSuccess/:id",
     element: <PaymentSuccess />,
+  },
+  {
+    path: "/profile",
+    element: <AuthenticationGuard component={ProfilePage} />,
   },
   {
     path: "/callback",

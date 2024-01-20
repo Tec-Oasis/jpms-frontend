@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Image, Row, Col } from 'react-bootstrap'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
@@ -48,7 +49,7 @@ const PropertyDetails = ({ property, show, handleClose }) => {
         </Row>
         <Row>
           <Col>
-            <p>Rent: ${rent} per month</p>
+            <p>Rent: MYR {rent}</p>
             <p>Location: {location}</p>
             <p>Amenities:</p>
             <ul>

@@ -1,0 +1,11 @@
+.booking-details-card > .card-body {
+  padding: 0 0 16px 0;
+}
+
+.booking-details-card * {
+  padding: 0 16px;
+}
+
+.booking-details-card > .card-body > .card-title:first-child {
+  padding: 16px 16px 0px 16px;
+}

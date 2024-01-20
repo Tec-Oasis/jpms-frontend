@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import { useParams } from "react-router-dom";
-import { Form, Row, Col, Card, Container, Button } from "react-bootstrap";
+import { Row, Col, Card, Container, Button } from "react-bootstrap";
 
 import AlterNav from "../components/AlterNav";
 
@@ -38,7 +38,7 @@ const FinalDetails = () => {
     return <div>Loading...</div>;
   }
 
-  const { img, name, desc, rent, location, amenities } = property;
+  const { img, name, rent, location } = property;
 
   return (
     <>
@@ -48,7 +48,7 @@ const FinalDetails = () => {
 
       <>
         <Container fluid="lg">
-          <Row>
+          <Row className="justify-content-md-center">
             <Col xxl="4">
               <Card className="mb-3">
                 <Card.Body>
@@ -62,6 +62,8 @@ const FinalDetails = () => {
                   <Card.Text>{location}</Card.Text>
                 </Card.Body>
               </Card>
+            </Col>
+            <Col xxl="4">
               <Card className="mb-3 booking-details-card">
                 <Card.Body>
                   <Card.Title>Your booking details</Card.Title>
@@ -97,46 +99,22 @@ const FinalDetails = () => {
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
                     <Card.Text>Original price</Card.Text>
-                    <Card.Text>MYR 1000</Card.Text>
+                    <Card.Text>MYR {rent}</Card.Text>
                   </div>
                 </Card.Body>
               </Card>
-            </Col>
-            <Col>
-              <Form>
-                <Card className="mb-3">
-                  <Card.Body>
-                    <Card.Title>When do you want to pay</Card.Title>
-
-                    <Form.Check
-                      type="radio"
-                      label="Pay Now"
-                      id="paynow"
-                      style={{ fontSize: "1.2em" }}
-                    />
-
-                    <Form.Check
-                      type="radio"
-                      label="Pay Later -> feautre coming soon!"
-                      style={{ fontSize: "1.2em" }}
-                      id="paylater"
-                      disabled
-                    />
-                  </Card.Body>
-                </Card>
-                <div style={{ display: "flex", flexDirection: "row-reverse" }}>
-                  <form
-                    action={`${
-                      import.meta.env.VITE_API_SERVER_URL
-                    }/stripe/checkout`}
-                    method="POST"
-                  >
-                    <Button type="submit" className="mb-3 mt-3">
-                      Next: Payment
-                    </Button>
-                  </form>
-                </div>
-              </Form>
+              <div style={{ display: "flex", flexDirection: "row-reverse" }}>
+                <form
+                  action={`${
+                    import.meta.env.VITE_API_SERVER_URL
+                  }/stripe/checkout/${id}`}
+                  method="POST"
+                >
+                  <Button type="submit" className="mb-3 mt-3">
+                    Next: Complete Payment
+                  </Button>
+                </form>
+              </div>
             </Col>
           </Row>
         </Container>
